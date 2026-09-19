@@ -1,0 +1,49 @@
+name: SchemaExtract
+description: >-
+  A document-to-JSON extraction service. Upload a PDF or image, pick a preset or paste a JSON schema, and get typed
+  fields back — vendor, totals, line items, packages, containers. Supports invoice, packing list, bank statement, and
+  bill of lading presets plus custom schemas.
+url: https://raw.githubusercontent.com/api-evangelist/schemaextract/refs/heads/main/apis.yml
+created: '2026-09-19'
+modified: '2026-09-19'
+specificationVersion: '0.21'
+tags:
+  - Document AI
+  - IDP
+  - Data extraction
+  - PDF/OCR-to-JSON
+  - Invoice & AP automation
+  - Logistics/freight
+  - Fintech
+  - Developer API
+apis:
+  - name: SchemaExtract API
+    description: >-
+      REST API for document-to-JSON extraction. Sync extraction via POST /v1/extract and async jobs via POST
+      /v1/extract/jobs, plus a /health liveness endpoint. Bearer API key auth with a demo/anonymous alternative.
+    humanURL: https://schemaextract.shop/docs
+    baseURL: https://schemaextract.shop
+    tags:
+      - Document AI
+      - IDP
+      - Data extraction
+      - PDF/OCR-to-JSON
+      - Invoice & AP automation
+      - Logistics/freight
+      - Fintech
+      - Developer API
+    properties:
+      - type: OpenAPI
+        url: https://schemaextract.shop/openapi.json
+      - type: LLMsTxt
+        url: https://schemaextract.shop/llms.txt
+      - type: Documentation
+        url: https://schemaextract.shop/docs
+maintainers:
+  - FN: SchemaExtract
+    url: https://schemaextract.shop
+generated:
+  by: apis.io/add
+  model: claude-opus-4-8
+  confidence: 97
+  at: '2026-09-19T07:34:05.991Z'

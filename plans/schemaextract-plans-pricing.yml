@@ -1,0 +1,49 @@
+generated: '2026-09-20'
+method: searched
+source: https://schemaextract.shop/pricing
+currency: USD
+billing_period: month
+plan_count: 3
+note: >-
+  Paid plans raise the monthly extract quota only — they do not sell model credits. Extraction runs
+  on OpenRouter :free models or local Ollama; paid OpenAI/Anthropic keys are optional. Stripe Checkout
+  and Customer Portal activate only when STRIPE_SECRET_KEY and price IDs are configured.
+plans:
+  - name: Free
+    price: 0
+    currency: USD
+    billing_period: month
+    quota:
+      extracts_per_month: 20
+    overage: none
+    limits:
+      card_required: false
+      features:
+        - All four presets + custom schema
+        - Web extractor + JSON/CSV export
+        - Mock or your own model key
+        - Demo mode without billing
+  - name: Starter
+    price: 29
+    currency: USD
+    billing_period: month
+    quota:
+      extracts_per_month: 500
+    overage: none
+    limits:
+      features:
+        - API keys
+        - Email magic-link workspace
+        - Stripe Checkout when configured
+  - name: Pro
+    price: 99
+    currency: USD
+    billing_period: month
+    quota:
+      extracts_per_month: 5000
+    overage: 'usage overage billed later'
+    limits:
+      features:
+        - Higher quota
+        - Customer portal
+        - Priority path (same API)

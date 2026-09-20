@@ -1,0 +1,62 @@
+generated: '2026-09-20'
+method: searched
+source: https://schemaextract.shop/docs + openapi/schemaextract-openapi.yml
+auth:
+  style: bearer-token
+  header: 'Authorization: Bearer sk_live_…'
+  demo_alternative: 'DEMO_MODE allows anonymous extract with no Authorization header'
+  key_management: 'GET/POST /v1/keys, DELETE /v1/keys/:id; passwordless sign-in via POST /v1/auth/magic-link'
+pagination:
+  supported: false
+  note: No list endpoints with pagination; extraction is single-request.
+field_expansion:
+  supported: false
+metadata:
+  note: Every successful extract returns a meta object (model, pages, preset, filename, mode, warnings, plan, quota_remaining).
+request_id_tracing:
+  supported: unknown
+  note: No documented request-id/trace header.
+versioning:
+  style: uri-path
+  current: v1
+error_envelope:
+  shape: '{ "ok": <bool>, "error"|"data": … }'
+  content_type: application/json
+  problem_json: false
+  note: Custom envelope, not RFC 9457 problem+json. See errors/schemaextract-problem-types.yml.
+rate_limit_signaling:
+  headers: [X-RateLimit-*]
+  retry_after: unknown
+  exhaustion_status: 429
+  quota_exhaustion_status: 402
+  note: Burst 60 req / 10 min per client -> 429 RATE_LIMITED with X-RateLimit-* headers. Monthly quota -> 402 QUOTA_EXCEEDED.
+idempotency:
+  coverage: none
+  mechanism: none
+  note: >-
+    No Idempotency-Key header or replay-protection mechanism documented. The primary write
+    (POST /v1/extract) is non-persistent — uploaded bytes are processed in memory and discarded
+    after the response — so a repeated call re-extracts rather than duplicating stored state.
+reversibility:
+  grade: documented
+  note: >-
+    The core extraction surface is effectively stateless: files are held in memory only and dropped
+    after the response/job, so an extract has nothing to undo. The only durable write surface is API
+    key management, which is reversible.
+  surfaces:
+    - operation: 'DELETE /v1/keys/:id'
+      reversal: revoke/delete API key
+      operationId: null
+      window: null
+      note: Documented in the docs "Other endpoints" list; not present in the published OpenAPI.
+    - operation: 'POST /v1/extract'
+      reversal: na
+      note: Non-persistent; input bytes discarded after the response, nothing to reverse.
+dry_run_mode:
+  supported: na
+  note: Demo/mock mode returns extraction results without billing but is not a no-op rehearsal of a write.
+cross_links:
+  errors: errors/schemaextract-problem-types.yml
+  lifecycle: lifecycle/schemaextract-lifecycle.yml
+  authentication: authentication/schemaextract-authentication.yml
+  rate_limits: rate-limits/schemaextract-rate-limits.yml

@@ -1,0 +1,31 @@
+# SchemaExtract
+
+> Document to JSON API. Upload a PDF or image plus a schema (or preset) and receive typed JSON.
+
+Home: https://schemaextract.shop/
+FAQ: https://schemaextract.shop/faq
+Pricing: https://schemaextract.shop/pricing
+Use cases: https://schemaextract.shop/use-cases
+API docs: https://schemaextract.shop/docs
+OpenAPI: https://schemaextract.shop/openapi.json
+Health: https://schemaextract.shop/health
+Sitemap: https://schemaextract.shop/sitemap.xml
+
+## Extract
+
+POST https://schemaextract.shop/v1/extract — sync (short cloud runs)
+POST https://schemaextract.shop/v1/extract/jobs — async; on Vercel the POST awaits the job then still supports GET poll
+
+## Presets
+
+- Invoice to JSON API — free, no card: https://schemaextract.shop/extract/invoice
+- Packing list to JSON API — images and PDFs: https://schemaextract.shop/extract/packing-list
+- Bank statement to JSON API — transactions as JSON: https://schemaextract.shop/extract/bank-statement
+- Bill of lading to JSON API — ocean freight fields: https://schemaextract.shop/extract/bol
+
+## Cost
+
+Free playground (20 extracts / month, no card).
+Default cloud path: OpenRouter-compatible endpoint + :free model ids (OPENAI_BASE_URL + OPENAI_MODEL).
+Local Ollama is supported. Paid OpenAI/Anthropic keys are optional, never required.
+Set APP_BASE_URL=https://schemaextract.shop for canonicals, sitemap, and JSON-LD.

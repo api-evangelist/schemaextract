@@ -1,0 +1,49 @@
+generated: '2026-09-20'
+method: probed
+source: live probes 2026-09-20
+# Every documented well-known / discovery path returned 404 on schemaextract.shop (a Next.js/Vercel
+# app whose 404 is a distinct HTML page, ~32 KB — not a catch-all 200). The negative-control path
+# also 404'd, so this host does NOT echo paths. No WellKnown / SecurityTxt / APICatalog pointer is
+# emitted — the recorded absence is the measurement.
+path_echo_control: passed
+hit_count: 0
+hosts:
+  - host: https://schemaextract.shop
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/apis.json
+        status: 404
+        file: null
+      - path: /apis.json
+        status: 404
+        file: null
+      - path: /apis.yml
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+      - path: /.well-known/schemaextract-negative-control-7f3ab91c.json
+        status: 404
+        file: null
+        note: negative control — a 404 here confirms the host does not path-echo

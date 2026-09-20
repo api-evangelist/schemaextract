@@ -1,0 +1,10 @@
+generated: '2026-09-20'
+method: generated
+source: openapi/schemaextract-openapi.yml
+skills:
+  - name: extract-document-to-json
+    file: schemaextract-extract-document.md
+    api: SchemaExtract API
+    operations: [extractDocument]
+    description: >-
+      Extract structured JSON from a PDF or image using a preset or a caller-supplied JSON schema.

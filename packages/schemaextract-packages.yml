@@ -1,0 +1,10 @@
+generated: '2026-09-20'
+method: searched
+source: registry probes 2026-09-20 + https://schemaextract.shop/docs + /faq
+# No first-party client library published. The product is curl / OpenAPI self-serve only; the FAQ
+# explicitly says "call POST /v1/extract yourself — self-serve, no sales call". Verified absent on:
+#   npm  registry.npmjs.org/schemaextract        -> 404
+#   npm  registry.npmjs.org/@schemaextract/sdk   -> 404
+#   pypi pypi.org/pypi/schemaextract/json        -> 404
+# No SDKs/Packages pointer wired — nothing to point at.
+packages: []

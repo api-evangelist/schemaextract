@@ -5,7 +5,7 @@ description: >-
   bill of lading presets plus custom schemas.
 url: https://raw.githubusercontent.com/api-evangelist/schemaextract/refs/heads/main/apis.yml
 created: '2026-09-19'
-modified: '2026-09-19'
+modified: '2026-09-20'
 specificationVersion: '0.21'
 tags:
   - Document AI
@@ -34,10 +34,18 @@ apis:
       - Developer API
     properties:
       - type: OpenAPI
+        url: openapi/schemaextract-openapi.yml
+      - type: OpenAPI
+        name: OpenAPI (provider-hosted)
         url: https://schemaextract.shop/openapi.json
       - type: LLMsTxt
+        url: llms/schemaextract-llms.txt
+      - type: LLMsTxt
+        name: llms.txt (provider-hosted)
         url: https://schemaextract.shop/llms.txt
       - type: Documentation
+        url: https://schemaextract.shop/docs
+      - type: APIReference
         url: https://schemaextract.shop/docs
 maintainers:
   - FN: SchemaExtract
@@ -47,3 +55,45 @@ generated:
   model: claude-opus-4-8
   confidence: 97
   at: '2026-09-19T07:34:05.991Z'
+common:
+- type: DomainSecurity
+  url: security/schemaextract-domain-security.yml
+- type: Authentication
+  url: authentication/schemaextract-authentication.yml
+- type: Website
+  url: https://schemaextract.shop/
+- type: DeveloperPortal
+  url: https://schemaextract.shop/dashboard
+- type: Pricing
+  url: https://schemaextract.shop/pricing
+- type: Login
+  url: https://schemaextract.shop/login
+- type: Support
+  url: https://schemaextract.shop/faq
+- type: StatusPage
+  url: https://schemaextract.shop/status
+- type: Lifecycle
+  url: lifecycle/schemaextract-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/schemaextract-problem-types.yml
+- type: RateLimits
+  url: rate-limits/schemaextract-rate-limits.yml
+- type: Plans
+  url: plans/schemaextract-plans-pricing.yml
+- type: Sandbox
+  url: sandbox/schemaextract-sandbox.yml
+- type: Conventions
+  url: conventions/schemaextract-conventions.yml
+- type: DataModel
+  url: data-model/schemaextract-data-model.yml
+- type: Conformance
+  url: conformance/schemaextract-conformance.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Overlay
+  url: overlays/schemaextract-openapi-overlay.yaml
+x-enrichment:
+  date: '2026-09-20'
+  status: enriched
+  artifacts_added: 18
+  pass: local-v3

@@ -1,0 +1,18 @@
+generated: '2026-09-20'
+method: searched
+source: https://schemaextract.shop/docs + /faq + /pricing + live path probes 2026-09-20
+# HARVEST ONLY. No horizontal-regulatory artifacts were located. Probed /privacy and /terms (both
+# 404), no security.txt, no trust center, no subprocessors/DPA/accessibility/SBOM/data-residency
+# pages. The docs do state a data-handling practice (uploaded files held in memory and discarded
+# after the response; only account metadata persisted) but this is not a formal privacy/DPA document.
+# The extraction model id is disclosed at GET /health, which is model transparency but not a formal
+# AI-transparency statement. An empty signals map is the correct measurement.
+signals: {}
+probed:
+  - {path: /privacy, status: 404}
+  - {path: /terms, status: 404}
+  - {path: /.well-known/security.txt, status: 404}
+notes: >-
+  Indie single-service product; no formal legal/compliance surface published. Data-minimization is
+  stated in prose (in-memory processing, files discarded) but not as a subprocessor list, DPA, or
+  privacy policy.

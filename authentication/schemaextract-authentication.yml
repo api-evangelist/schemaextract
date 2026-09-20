@@ -1,0 +1,13 @@
+generated: '2026-09-20'
+method: derived
+source: openapi/schemaextract-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: sk_live_
+  sources:
+  - openapi/schemaextract-openapi.yml

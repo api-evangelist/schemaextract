@@ -1,0 +1,39 @@
+generated: '2026-09-20'
+method: derived
+source: openapi/schemaextract-openapi.yml + https://schemaextract.shop/docs
+# The API is schema-driven: the caller supplies the output shape, so there is no fixed domain object
+# graph. Entities below are (a) the response envelope from the OpenAPI components, and (b) the four
+# built-in preset shapes documented on the docs/FAQ pages.
+entities:
+  - name: ExtractSuccess
+    source: openapi components.schemas.ExtractSuccess
+    fields: [ok, data, meta]
+  - name: ExtractError
+    source: openapi components.schemas.ExtractError
+    fields: [ok, error.code, error.message]
+  - name: meta
+    source: openapi components.schemas.ExtractSuccess.meta
+    fields: [model, pages, preset, filename, mode, warnings, vision_pages, raw_text, plan, quota_remaining]
+presets:
+  - name: invoice
+    fields: [vendor, invoice_number, date, currency, total, line_items]
+    line_items: [description, quantity, unit_price, amount]
+  - name: packing_list
+    fields: [shipper, consignee, marks, packages]
+    packages: [description, qty, weight_kg]
+  - name: bank_statement
+    fields: [account_holder, period_start, period_end, transactions]
+    transactions: [date, description, amount, balance]
+  - name: bol
+    fields: [bol_number, shipper, consignee, notify_party, vessel, voyage, ports, freight_terms, containers]
+    containers: [container_no, description, packages, weight_kg]
+relationships:
+  - from: ExtractSuccess
+    to: meta
+    kind: has_one
+    via: meta
+  - from: ExtractSuccess
+    to: data
+    kind: has_one
+    via: data
+    note: data is the caller-defined schema instance (one of the presets above or a custom schema)

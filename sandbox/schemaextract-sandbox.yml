@@ -1,0 +1,30 @@
+generated: '2026-09-20'
+method: searched
+source: https://schemaextract.shop/docs + https://schemaextract.shop/ (playground) + https://schemaextract.shop/health
+modes:
+  demo:
+    description: >-
+      DEMO_MODE allows anonymous extraction with no API key. /health reports mode "demo",
+      demoMode true. The free playground on the homepage runs without signup.
+    key_required: false
+  live:
+    description: 'Bearer sk_live_… when AUTH_SECRET is set and DEMO_MODE is off.'
+    key_prefix: sk_live_
+playground:
+  url: https://schemaextract.shop/
+  note: 'Homepage playground — "Try Invoice" returns JSON in seconds with no card and no signup.'
+  preset_pages:
+    - https://schemaextract.shop/extract/invoice
+    - https://schemaextract.shop/extract/packing-list
+    - https://schemaextract.shop/extract/bank-statement
+    - https://schemaextract.shop/extract/bol
+demo_curl: |
+  curl -sS -X POST https://schemaextract.shop/v1/extract -F "preset=invoice" -F "file=@invoice.pdf"
+test_fixtures:
+  note: >-
+    Docs reference sample documents (e.g. an "Acme" invoice sample and fixtures/ files such as
+    invoice-acme.pdf, packing-list-northwind.png) used in the playground and curl examples. These are
+    provider-published example filenames; no downloadable fixture bundle was located.
+limits:
+  file: PDF / PNG / JPG / WebP, max 10 MB, first 3 pages
+  schema: object root, max 50 top-level keys, depth 8, 200 total keys, 64 KB

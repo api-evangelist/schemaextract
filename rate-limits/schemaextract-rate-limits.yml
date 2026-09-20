@@ -1,0 +1,42 @@
+generated: '2026-09-20'
+method: searched
+source: https://schemaextract.shop/docs
+limit_count: 4
+response_headers:
+  - X-RateLimit-*
+exhaustion:
+  burst_status: 429
+  burst_code: RATE_LIMITED
+  quota_status: 402
+  quota_code: QUOTA_EXCEEDED
+limits:
+  - scope: per-client
+    type: burst
+    window: 10m
+    limit: 60
+    burst: 60
+    status_on_exhaustion: 429
+    error_code: RATE_LIMITED
+    headers: [X-RateLimit-*]
+    note: 60 requests per 10 minutes per client.
+  - scope: per-account
+    type: monthly-quota
+    window: 1mo
+    limit: 20
+    plan: Free
+    status_on_exhaustion: 402
+    error_code: QUOTA_EXCEEDED
+  - scope: per-account
+    type: monthly-quota
+    window: 1mo
+    limit: 500
+    plan: Starter
+    status_on_exhaustion: 402
+    error_code: QUOTA_EXCEEDED
+  - scope: per-account
+    type: monthly-quota
+    window: 1mo
+    limit: 5000
+    plan: Pro
+    status_on_exhaustion: 402
+    error_code: QUOTA_EXCEEDED

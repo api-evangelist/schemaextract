@@ -1,0 +1,21 @@
+generated: '2026-09-20'
+method: derived
+status: candidate
+source: openapi/schemaextract-openapi.yml
+# No hosted/remote MCP server and no stdio package published. Probed mcp.schemaextract.shop (no
+# connection) and /mcp on schemaextract.shop (404). llms.txt names no MCP endpoint. This is a DERIVED
+# candidate tool list only — no MCPServer pointer is wired into apis.yml because no server exists.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: derived
+tools:
+  - name: extract_document
+    description: Extract structured JSON from a PDF or image using a JSON schema or a built-in preset.
+    source_operation: openapi/schemaextract-openapi.yml#extractDocument
+  - name: health
+    description: Liveness and feature-flag check.
+    source_operation: openapi/schemaextract-openapi.yml#health

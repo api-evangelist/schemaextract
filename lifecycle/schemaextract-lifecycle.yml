@@ -1,0 +1,24 @@
+generated: '2026-09-20'
+method: searched
+source: https://schemaextract.shop/docs + https://schemaextract.shop/status + openapi.json
+versioning:
+  scheme: uri-path
+  current: v1
+  spec_version: 0.2.0
+  docs: https://schemaextract.shop/docs
+  note: >-
+    Endpoints are namespaced under /v1/ (e.g. /v1/extract). The OpenAPI document itself carries
+    info.version 0.2.0. No published version-negotiation header or version-support policy found.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No deprecation policy or RFC 8594 Sunset/Deprecation header support documented.
+sla:
+  url: null
+  uptime_target: null
+  note: No SLA or uptime commitment published (free-first indie service).
+status_page: https://schemaextract.shop/status
+status_page_note: >-
+  First-party /status page that performs a live client-side read of GET /health. Self-hosted, no
+  third-party status vendor. /health returns service, mode, and feature flags as JSON.
+deprecated_operations: []

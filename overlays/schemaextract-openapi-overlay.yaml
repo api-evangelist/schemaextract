@@ -1,0 +1,24 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for SchemaExtract API
+  version: 1.0.0
+extends: openapi/schemaextract-openapi.yml
+# Captures API Evangelist-derived annotations without mutating the harvested spec. The published
+# spec covers only /health and /v1/extract; the docs additionally describe async jobs, key
+# management, and billing endpoints not present in the contract (noted below, never fabricated in).
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-rating-source: https://schemaextract.shop/openapi.json
+      x-apievangelist-notes: >-
+        Docs describe additional undocumented-in-spec endpoints: POST /v1/extract/jobs and
+        GET /v1/extract/jobs/:id (async), POST /v1/auth/magic-link, GET/POST /v1/keys,
+        DELETE /v1/keys/:id, and POST /v1/billing/checkout|portal|webhook.
+  - target: $.servers
+    update:
+      x-apievangelist-resolved-base: https://schemaextract.shop
+      x-apievangelist-mirror: https://schemaextract.vercel.app
+  - target: "$.paths['/v1/extract'].post"
+    update:
+      x-apievangelist-rate-limit: 60 requests / 10 minutes per client (429 RATE_LIMITED, X-RateLimit-*)
+      x-apievangelist-quota: Free 20 / Starter 500 / Pro 5000 extracts per month (402 QUOTA_EXCEEDED)

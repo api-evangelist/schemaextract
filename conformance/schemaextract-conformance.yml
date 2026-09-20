@@ -1,0 +1,25 @@
+generated: '2026-09-20'
+method: derived
+source: openapi/schemaextract-openapi.yml + https://schemaextract.shop/docs
+standards:
+  - id: http-bearer
+    conforms: true
+    evidence: openapi securityScheme type http scheme bearer (bearerFormat sk_live_)
+  - id: oauth2
+    conforms: false
+    evidence: no oauth2 securityScheme
+  - id: openid-connect
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: error responses use a custom { ok, error{code,message} } JSON envelope, not application/problem+json
+  - id: json-schema
+    conforms: true
+    evidence: >-
+      The extract endpoint accepts a caller-supplied JSON Schema (or example object) as its `schema`
+      parameter to shape the returned data — JSON Schema is the product's input contract.
+  - id: pagination
+    conforms: false
+    evidence: no list/collection endpoints
+# No published compliance certifications (SOC 2 / ISO 27001 / PCI / HIPAA / FedRAMP) found — no
+# Compliance pointer emitted.

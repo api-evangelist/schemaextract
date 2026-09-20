@@ -1,0 +1,49 @@
+generated: '2026-09-20'
+method: derived
+source: openapi/schemaextract-openapi.yml + https://schemaextract.shop/docs
+# Error envelope is a custom JSON shape { ok: false, error: { code, message } } returned as
+# application/json — NOT RFC 9457 application/problem+json. format recorded honestly.
+format: custom-json-envelope
+envelope:
+  shape: '{ "ok": false, "error": { "code": "<CODE>", "message": "<human message>" } }'
+  content_type: application/json
+# HTTP status responses declared on POST /v1/extract in the OpenAPI, cross-referenced with the
+# documented error-code enum on the docs page. code -> the ExtractError.error.code enum value.
+problems:
+  - status: 400
+    codes: [BAD_REQUEST, INVALID_JSON, INVALID_SCHEMA, SCHEMA_TOO_LARGE, INVALID_PRESET, MISSING_FILE]
+    title: Invalid schema, preset, or request
+    remediation: >-
+      Send a valid JSON object schema root (max 50 top-level keys, depth 8, 200 total keys, 64 KB),
+      a valid preset (invoice | packing_list | bank_statement | bol), and include a file.
+    source_operation: openapi/schemaextract-openapi.yml#extractDocument
+  - status: 401
+    codes: [UNAUTHORIZED]
+    title: Missing or invalid API key
+    remediation: 'Send Authorization: Bearer sk_live_… when AUTH_SECRET is set and DEMO_MODE is off.'
+    source_operation: openapi/schemaextract-openapi.yml#extractDocument
+  - status: 402
+    codes: [PAYMENT_REQUIRED, QUOTA_EXCEEDED]
+    title: Monthly quota exceeded (upgrade)
+    remediation: 'Upgrade plan (Free 20 / Starter 500 / Pro 5000 extracts per month) or wait for the monthly reset.'
+    source_operation: openapi/schemaextract-openapi.yml#extractDocument
+  - status: 413
+    codes: [FILE_TOO_LARGE]
+    title: File too large
+    remediation: 'Keep files under 10 MB; only the first 3 pages are processed.'
+    source_operation: openapi/schemaextract-openapi.yml#extractDocument
+  - status: 415
+    codes: [UNSUPPORTED_FILE]
+    title: Unsupported file type
+    remediation: 'Upload PDF, PNG, JPG, or WebP.'
+    source_operation: openapi/schemaextract-openapi.yml#extractDocument
+  - status: 429
+    codes: [RATE_LIMITED]
+    title: Burst rate limited
+    remediation: 'Back off; burst limit is 60 requests / 10 minutes per client. Inspect X-RateLimit-* headers.'
+    source_operation: openapi/schemaextract-openapi.yml#extractDocument
+  - status: 502
+    codes: [MODEL_FAILURE]
+    title: Upstream model failure
+    remediation: 'Retry; the extraction model backend (OpenRouter / OpenAI / Anthropic / Ollama) failed.'
+    source_operation: openapi/schemaextract-openapi.yml#extractDocument

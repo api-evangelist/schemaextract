@@ -26,45 +26,40 @@ tags_raw:
   - Fintech
   - Developer API
 apis:
-  - name: SchemaExtract API
-    description: >-
-      REST API for document-to-JSON extraction. Sync extraction via POST /v1/extract and async jobs via POST
-      /v1/extract/jobs, plus a /health liveness endpoint. Bearer API key auth with a demo/anonymous alternative.
-    humanURL: https://schemaextract.shop/docs
-    baseURL: https://schemaextract.shop
-    tags:
-      - Document AI
-      - IDP
-      - Data Extraction
-      - PDF/OCR-to-JSON
-      - Invoice & AP automation
-      - Logistics/freight
-      - Fintech
-      - Developer API
-    tags_raw:
-      - Document AI
-      - IDP
-      - Data extraction
-      - PDF/OCR-to-JSON
-      - Invoice & AP automation
-      - Logistics/freight
-      - Fintech
-      - Developer API
-    properties:
-      - type: OpenAPI
-        url: openapi/schemaextract-openapi.yml
-      - type: OpenAPI
-        name: OpenAPI (provider-hosted)
-        url: https://schemaextract.shop/openapi.json
-      - type: LLMsTxt
-        url: llms/schemaextract-llms.txt
-      - type: LLMsTxt
-        name: llms.txt (provider-hosted)
-        url: https://schemaextract.shop/llms.txt
-      - type: Documentation
-        url: https://schemaextract.shop/docs
-      - type: APIReference
-        url: https://schemaextract.shop/docs
+- aid: schemaextract:schemaextract-extract-api
+  name: SchemaExtract Extract API
+  description: The Extract API from SchemaExtract — 1 operation(s) for extract.
+  humanURL: https://schemaextract.shop/docs
+  tags:
+  - Extract
+  properties:
+  - type: OpenAPI
+    url: openapi/schemaextract-extract-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/schemaextract-llms.txt
+  - type: LLMsTxt
+    url: https://schemaextract.shop/llms.txt
+  - type: Documentation
+    url: https://schemaextract.shop/docs
+  - type: APIReference
+    url: https://schemaextract.shop/docs
+- aid: schemaextract:schemaextract-health-api
+  name: SchemaExtract Health API
+  description: The Health API from SchemaExtract — 1 operation(s) for health.
+  humanURL: https://schemaextract.shop/docs
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/schemaextract-health-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/schemaextract-llms.txt
+  - type: LLMsTxt
+    url: https://schemaextract.shop/llms.txt
+  - type: Documentation
+    url: https://schemaextract.shop/docs
+  - type: APIReference
+    url: https://schemaextract.shop/docs
 maintainers:
   - FN: SchemaExtract
     url: https://schemaextract.shop

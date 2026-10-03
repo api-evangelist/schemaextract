@@ -1,33 +1,28 @@
 {
   "provider": "schemaextract",
   "sources": [
-    "_original/schemaextract-openapi.json",
-    "schemaextract-openapi.yml"
+    "_original/schemaextract-openapi.json"
   ],
   "outputs": [
     "schemaextract-extract-api-openapi.yml",
     "schemaextract-health-api-openapi.yml"
   ],
-  "archived": [
-    "archived openapi/schemaextract-openapi.yml"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
+    "1 archived document(s) dropped as subsets of other archived documents",
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "schemaextract-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "schemaextract-openapi.json: tagged paths GET /health -> Health",
     "schemaextract-openapi.json: tagged paths POST /v1/extract -> Extract",
     "schemaextract-openapi.json: declared missing tag: Extract",
     "schemaextract-openapi.json: declared missing tag: Health",
-    "schemaextract-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "schemaextract-openapi.yml: tagged paths GET /health -> Health",
-    "schemaextract-openapi.yml: tagged paths POST /v1/extract -> Extract",
-    "schemaextract-openapi.yml: declared missing tag: Extract",
-    "schemaextract-openapi.yml: declared missing tag: Health",
-    "tag 'Extract' spans 2 source specs (schemaextract-openapi.json, schemaextract-openapi.yml): per-path servers applied",
-    "tag 'Health' spans 2 source specs (schemaextract-openapi.json, schemaextract-openapi.yml): per-path servers applied",
-    "apis.yml register: written (+2 apis, 2 total)"
+    "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "_original/schemaextract-openapi.yml: archived document superseded by a larger archived document",
+    "schemaextract-extract-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "schemaextract-health-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

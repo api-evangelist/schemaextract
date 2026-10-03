@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Schemaextract Health API
+  title: SchemaExtract Health API
   version: 0.2.0
-  description: 'Operations tagged Health across 2 of this provider''s published API definitions: schemaextract-openapi.json, schemaextract-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: Schema-driven document to JSON extraction. Upload a PDF or image plus a JSON schema (or preset) and receive structured data. Files are processed in memory and discarded after the response.
 servers:
 - url: /
   description: This deployment
@@ -22,15 +22,9 @@ paths:
           description: Service is up
       tags:
       - Health
-    servers:
-    - url: /
-      description: This deployment
 components:
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
       bearerFormat: sk_live_
-x-refined-from:
-- schemaextract-openapi.json
-- schemaextract-openapi.yml

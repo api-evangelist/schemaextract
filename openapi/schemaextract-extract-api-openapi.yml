@@ -135,6 +135,40 @@ paths:
       - Extract
 components:
   schemas:
+    ExtractError:
+      type: object
+      required:
+      - ok
+      - error
+      properties:
+        ok:
+          type: boolean
+          enum:
+          - false
+        error:
+          type: object
+          required:
+          - code
+          - message
+          properties:
+            code:
+              type: string
+              enum:
+              - BAD_REQUEST
+              - INVALID_JSON
+              - INVALID_SCHEMA
+              - SCHEMA_TOO_LARGE
+              - INVALID_PRESET
+              - MISSING_FILE
+              - UNSUPPORTED_FILE
+              - FILE_TOO_LARGE
+              - MODEL_FAILURE
+              - RATE_LIMITED
+              - UNAUTHORIZED
+              - PAYMENT_REQUIRED
+              - QUOTA_EXCEEDED
+            message:
+              type: string
     ExtractSuccess:
       type: object
       required:
@@ -180,40 +214,6 @@ components:
               type: string
             quota_remaining:
               type: integer
-    ExtractError:
-      type: object
-      required:
-      - ok
-      - error
-      properties:
-        ok:
-          type: boolean
-          enum:
-          - false
-        error:
-          type: object
-          required:
-          - code
-          - message
-          properties:
-            code:
-              type: string
-              enum:
-              - BAD_REQUEST
-              - INVALID_JSON
-              - INVALID_SCHEMA
-              - SCHEMA_TOO_LARGE
-              - INVALID_PRESET
-              - MISSING_FILE
-              - UNSUPPORTED_FILE
-              - FILE_TOO_LARGE
-              - MODEL_FAILURE
-              - RATE_LIMITED
-              - UNAUTHORIZED
-              - PAYMENT_REQUIRED
-              - QUOTA_EXCEEDED
-            message:
-              type: string
   securitySchemes:
     bearerAuth:
       type: http
